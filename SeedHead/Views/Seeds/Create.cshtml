@@ -1,0 +1,23 @@
+﻿@model SeedHead.Models.Seed
+
+<html>
+<head>
+    <title>SeedHead - Create</title>
+</head>
+<body>
+    <h2>Create</h2>
+    <hr />
+    <h4>Add a new Seed</h4>
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name)
+        @Html.LabelFor(model => model.Description)
+        @Html.TextBoxFor(model => model.Description)
+        @Html.LabelFor(model => model.Amount)
+        @Html.TextBoxFor(model => model.Amount)
+        <input type="submit" value="Add new seed" />
+    }
+    <p>@Html.ActionLink("Back to list", "Index")</p>
+</body>
+</html>

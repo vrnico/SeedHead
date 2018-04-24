@@ -9,12 +9,14 @@
     <h4>@Html.DisplayNameFor(model => model.Description)</h4>
     <ul>
         @foreach (var listSeed in Model)
-    {
-        <li>
-            @Html.DisplayFor(modelSeed => listSeed.Description) |
-            @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId })
-        </li>
-}
+        {
+            <li>
+                @Html.DisplayFor(modelSeed => listSeed.Description) |
+                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId })
+            </li>
+        }
     </ul>
+
+    <p>@Html.ActionLink("Add new seed", "Create")</p>
 </body>
 </html>

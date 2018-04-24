@@ -24,5 +24,18 @@ namespace SeedHead.Controllers
             return View(thisSeed);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Seed seed)
+        {
+            db.Seeds.Add(seed);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
     }
 }
