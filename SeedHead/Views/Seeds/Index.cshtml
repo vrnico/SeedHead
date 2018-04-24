@@ -8,10 +8,13 @@
     <h2>SeedHead</h2>
     <h4>@Html.DisplayNameFor(model => model.Description)</h4>
     <ul>
-        @foreach (var listItem in Model)
-        {
-            <li>@Html.DisplayFor(modelItem => listItem.Description)</li>
-        }
+        @foreach (var listSeed in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelSeed => listSeed.Description) |
+            @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId })
+        </li>
+}
     </ul>
 </body>
 </html>

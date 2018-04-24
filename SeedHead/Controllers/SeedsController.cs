@@ -17,5 +17,12 @@ namespace SeedHead.Controllers
             List<Seed> model = db.Seeds.ToList();
             return View(model);
         }
+
+        public IActionResult Details(int id)
+        {
+            Seed thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            return View(thisSeed);
+        }
+
     }
 }
