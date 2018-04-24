@@ -10,64 +10,54 @@ using SeedHead.Models;
 
 namespace SeedHead.Controllers
 {
-    public class SeedsController : Controller
+    public class OffersController : Controller
     {
-    
         private SeedHeadContext db = new SeedHeadContext();
-
         public IActionResult Index()
         {
-        
-            return View(db.Seeds.Include(seeds => seeds.Offer).ToList());
+            List<Offer> model = db.Offers.ToList();
+            return View(model);
         }
-
         public IActionResult Details(int id)
         {
-            Seed thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            return View(thisSeed);
+            var thisOffer = db.Offers.Include(offer => offer.Seeds)
+            .FirstOrDefault(offers => offers.OfferId == id);
+            return View(thisOffer);
         }
-
         public IActionResult Create()
         {
-            ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
-            return View();
             return View();
         }
-
         [HttpPost]
-        public IActionResult Create(Seed seed)
+        public IActionResult Create(Offer offer)
         {
-            db.Seeds.Add(seed);
+            db.Offers.Add(offer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         public IActionResult Edit(int id)
         {
-            var thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
-            return View(thisSeed);
+            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            ViewBag.OfferId = new SelectList(db.Seeds, "SeedId", "Name");
+            return View(thisOffer);
         }
-
         [HttpPost]
-        public IActionResult Edit(Seed seed)
+        public IActionResult Edit(Offer offer)
         {
-            db.Entry(seed).State = EntityState.Modified;
+            db.Entry(offer).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        public IActionResult Delete(int id)
+        public ActionResult Delete(int id)
         {
-            var thisItem = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            return View(thisItem);
+            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            return View(thisOffer);
         }
-
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            db.Seeds.Remove(thisSeed);
+            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            db.Offers.Remove(thisOffer);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

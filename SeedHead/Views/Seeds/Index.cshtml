@@ -1,24 +1,39 @@
 ﻿@model IEnumerable<SeedHead.Models.Seed>
 
-<html>
-<head>
-    <title>SeedHead</title>
-</head>
-<body>
-    <h2>SeedHead</h2>
-    <h4>@Html.DisplayNameFor(model => model.Description)</h4>
-    <ul>
-        @foreach (var listSeed in Model)
-        {
-            <li>
-                @Html.DisplayFor(modelSeed => listSeed.Name) |
-                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
-                @Html.ActionLink("Edit", "Edit", new {  id = listSeed.SeedId}) |
-                @Html.ActionLink("Delete", "Delete", new {  id = listSeed.SeedId})
-            </li>
-        }
-    </ul>
+@{
+    ViewData["Title"] = "Seed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Seed List</h2>
+<hr />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Offer.Name)
+        </th>
+        <th></th>
+    </tr>
 
-    <p>@Html.ActionLink("Add new seed", "Create")</p>
-</body>
-</html>
+    @foreach (var listSeed in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelSeed => listSeed.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelSeed => listSeed.Offer.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = listSeed.SeedId }) |
+                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = listSeed.SeedId })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

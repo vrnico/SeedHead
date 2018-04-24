@@ -1,13 +1,13 @@
 ﻿@model SeedHead.Models.Seed
 
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <h2>Seed Details</h2>
-    <hr />
-    @Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)
-    <p>@Html.ActionLink("Back to list", "Index")</p>
-</body>
-</html>
+@{
+    ViewData["Title"] = "Seed - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Item Details</h2>
+<hr />
+
+<p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
+<p>@Html.DisplayNameFor(model => model.CategoryId) : @Html.DisplayFor(model => model.CategoryId)</p>
+
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.SeedId }) | @Html.ActionLink("Back to List", "Index")</p>

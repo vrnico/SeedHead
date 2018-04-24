@@ -1,5 +1,10 @@
 ﻿@model Seedhead.Models.Seed
 
+@{
+    ViewData["Title"] = "Seed - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <html>
 <head>
     <title>Seed List - Edit</title>
@@ -25,6 +30,9 @@
 
         @Html.LabelFor(model => model.Amount)
         @Html.EditorFor(model => model.Amount)
+
+        @Html.LabelFor(model => model.CategoryId)
+        @Html.DropDownList("CategoryId")
 
         <input type="submit" value="Save" />
     }
