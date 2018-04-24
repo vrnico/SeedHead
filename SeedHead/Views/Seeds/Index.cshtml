@@ -11,8 +11,10 @@
         @foreach (var listSeed in Model)
         {
             <li>
-                @Html.DisplayFor(modelSeed => listSeed.Description) |
-                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId })
+                @Html.DisplayFor(modelSeed => listSeed.Name) |
+                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
+                @Html.ActionLink("Edit", "Edit", new {  id = listSeed.SeedId}) |
+                @Html.ActionLink("Delete", "Delete", new {  id = listSeed.SeedId})
             </li>
         }
     </ul>
