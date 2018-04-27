@@ -13,7 +13,7 @@ namespace SeedHead.Tests
         public void GetDescription_ReturnsItemDescription_String()
         {
             //Arrange
-            var seed = new Seed();
+            var seed = new Seed("Amaranth", "cool", "40 Parcels");
 
             seed.Description = "cool";
 
