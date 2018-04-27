@@ -40,6 +40,20 @@ namespace SeedHead.Tests.ControllerTests
             Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
 
+        [TestMethod]
+        public void Mock_IndexContainsModelData_List() 
+        {
+            // Arrange
+            DbSetup();
+            ViewResult indexView = new SeedsController(mock.Object).Index() as ViewResult;
+
+            // Act
+            var result = indexView.ViewData.Model;
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(List<Seed>));
+        }
+
     }
         
 }
