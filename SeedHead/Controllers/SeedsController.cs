@@ -13,23 +13,35 @@ namespace SeedHead.Controllers
     public class SeedsController : Controller
     {
     
-        private SeedHeadContext db = new SeedHeadContext();
+        private ISeedRepository seedRepo;
 
-        public IActionResult Index()
+        public SeedsController(ISeedRepository repo = null)
+        {
+            if (repo == null)
+            {
+                this.seedRepo = new EFSeedRepository();
+            }
+            else
+            {
+                this.seedRepo = repo;
+            }
+        }
+
+        public ViewResult Index()
         {
         
-            return View(db.Seeds.Include(seeds => seeds.Offer).ToList());
+            return View(seedRepo.Seeds.Include(seeds => seeds.Offer).ToList());
         }
 
         public IActionResult Details(int id)
         {
-            Seed thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
             return View(thisSeed);
         }
 
         public IActionResult Create()
         {
-            ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
+            ViewBag.OfferId = new SelectList(seedRepo.Offers, "OfferId", "Name");
             return View();
            
         }
@@ -37,15 +49,15 @@ namespace SeedHead.Controllers
         [HttpPost]
         public IActionResult Create(Seed seed)
         {
-            db.Seeds.Add(seed);
-            db.SaveChanges();
+            seedRepo.Save(seed);
+
             return RedirectToAction("Index");
         }
 
         public IActionResult Edit(int id)
         {
-            ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
-            Seed thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            ViewBag.OfferId = new SelectList(seedRepo.Offers, "OfferId", "Name");
+            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
             
             return View(thisSeed);
         }
@@ -53,23 +65,22 @@ namespace SeedHead.Controllers
         [HttpPost]
         public IActionResult Edit(Seed seed)
         {
-            db.Entry(seed).State = EntityState.Modified;
-            db.SaveChanges();
+            seedRepo.Edit(seed);
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var thisItem = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            return View(thisItem);
+            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            return View(thisSeed);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            db.Seeds.Remove(thisSeed);
-            db.SaveChanges();
+            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            seedRepo.Seeds.Remove(thisSeed);
+            
             return RedirectToAction("Index");
         }
 
