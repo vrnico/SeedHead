@@ -31,7 +31,7 @@ namespace SeedHead.Controllers
         {
             ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
             return View();
-            return View();
+           
         }
 
         [HttpPost]

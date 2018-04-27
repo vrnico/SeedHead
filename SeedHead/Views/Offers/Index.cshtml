@@ -4,7 +4,9 @@
     ViewData["Title"] = "Offer";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Offer</h2>
+
+<h1 class="home"><a href="/"><i class="fas fa-leaf fa-2x"></i></a></h1>
+<h1>Offer Zones</h1>
 <hr />
 <table class="table">
     <tr>
@@ -29,9 +31,10 @@
     }
 </table>
 
-<p>
+<h2>
     @Html.ActionLink("Create New Offering Profile", "Create", "Offers")
-</p>
-<p>
-    @Html.ActionLink("Back To List", "Index", "Seeds")
-</p>
+</h2>
+
+<h2>
+    @Html.ActionLink("Seed List", "Index", "Seeds")
+</h2>

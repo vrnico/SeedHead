@@ -19,4 +19,6 @@ namespace SeedHead.Models
         public int OfferId { get; set; }
         public virtual Offer Offer { get; set; }
     }
+
+
 }

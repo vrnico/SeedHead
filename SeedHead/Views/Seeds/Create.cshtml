@@ -17,6 +17,8 @@
     {
         @Html.LabelFor(model => model.Name)
         @Html.TextBoxFor(model => model.Name)
+
+        @Html.HiddenFor(model => model.SeedId)
         @Html.LabelFor(model => model.Description)
         @Html.TextBoxFor(model => model.Description)
         @Html.LabelFor(model => model.Amount)

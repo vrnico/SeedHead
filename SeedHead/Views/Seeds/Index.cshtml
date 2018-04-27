@@ -4,15 +4,17 @@
     ViewData["Title"] = "Seed";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1 class="home"><a href="/"><i class="fas fa-leaf fa-2x"></i></a></h1>
 <h2>Seed List</h2>
-<hr />
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Offer.Name)
+            Offered By
         </th>
         <th></th>
     </tr>
@@ -21,6 +23,8 @@
     {
         <tr>
             <td>
+
+              
                 @Html.DisplayFor(modelSeed => listSeed.Name)
             </td>
             <td>
@@ -34,6 +38,9 @@
         </tr>
     }
 </table>
-<p>
+<h2>
     @Html.ActionLink("Create New", "Create")
-</p>
+</h2>
+<h2>
+    @Html.ActionLink("Offer List", "Index", "Offers")
+</h2>

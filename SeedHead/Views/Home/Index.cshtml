@@ -1,11 +1,15 @@
 ﻿@model IEnumerable<SeedHead.Models.Seed>
-
+@{
+    ViewData["Title"] = "Seed";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <html>
 <head>
     <title>SeedHead</title>
 </head>
 <body>
     <h2>SeedHead</h2>
-    <p>@Html.ActionLink("Seed list", "Index", "Seeds")</p>
+    <h2>@Html.ActionLink("Seed list", "Index", "Seeds")</h2>
+    <h2>@Html.ActionLink("Offer list", "Index", "Offers")</h2>
 </body>
 </html>
