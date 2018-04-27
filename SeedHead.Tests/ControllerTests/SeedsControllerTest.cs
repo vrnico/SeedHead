@@ -54,6 +54,27 @@ namespace SeedHead.Tests.ControllerTests
             Assert.IsInstanceOfType(result, typeof(List<Seed>));
         }
 
+        [TestMethod]
+        public void Mock_GetDetails_ReturnsView()
+        {
+            // Arrange
+            Seed testSeed = new Seed();
+            {
+         
+            };
+
+            DbSetup();
+            SeedsController controller = new SeedsController(mock.Object);
+
+            // Act
+            var resultView = controller.Details(testSeed.SeedId) as ViewResult;
+            var model = resultView.ViewData.Model as Seed;
+
+            // Assert
+            Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+            Assert.IsInstanceOfType(model, typeof(Seed));
+        }
+
     }
         
 }
