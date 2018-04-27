@@ -78,8 +78,9 @@ namespace SeedHead.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-          
-            seedRepo.Delete(id);
+
+            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(x => x.SeedId == id);
+            seedRepo.Delete(thisSeed);
             
             return RedirectToAction("Index");
         }

@@ -14,7 +14,7 @@ namespace SeedHead.Tests
         public void GetDescription_ReturnsSeedDescription_String()
         {
             //Arrange
-            var seed = new Seed("Amaranth", "cool", "40 Parcels");
+            var seed = new Seed();
 
             seed.Description = "cool";
 

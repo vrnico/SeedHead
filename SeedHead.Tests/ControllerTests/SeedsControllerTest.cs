@@ -20,10 +20,24 @@ namespace SeedHead.Tests.ControllerTests
         {
             mock.Setup(m => m.Seeds).Returns(new Seed[]
             {
-                new Seed {Name = "Amaranth", Description = "fill", Amount = 40},
-                new Seed {Name = "Arugula", Description = "fluff", Amount = 50},
-                new Seed {Name = "Anice", Description = "stuff", Amount = 30}
+                new Seed {},
+                new Seed {},
+                new Seed {}
             }.AsQueryable());
+        }
+
+        [TestMethod]
+        public void Mock_GetViewResultIndex_ActionResult() // Confirms route returns view
+        {
+            //Arrange
+            DbSetup();
+            SeedsController controller = new SeedsController(mock.Object);
+
+            //Act
+            var result = controller.Index();
+
+            //Assert
+            Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
 
     }

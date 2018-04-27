@@ -21,13 +21,7 @@ namespace SeedHead.Models
         public virtual Offer Offer { get; set; }
 
 
-        public Seed(string name, string description, int amount)
-        {
-            Name = name;
-            Description = description;
-            Amount = amount;
-            SeedId = 0;
-        }
+
 
         public override bool Equals(object seedNon)
         {
