@@ -64,6 +64,13 @@ Enjoy your brand new SeedHead Database!
 | ------------- |:-------------:|
 | Gardener DIY House    | **There are 8 different crops available at this Offer Zone** |
 
+4. #### Takes a user input as a review with a rating
+
+| Input      | Output           |
+| ------------- |:-------------:|
+| Amaranth, 5/5 heads, Thanks for the seeds Mark! I was able to grow them from sprout to harvest! Don't forget to plant these on a rainy day if you can!    | **Amaranth, 5/5 heads, Thanks for the seeds Mark! I was able to grow them from sprout to harvest! Don't forget to plant these on a rainy day if you can!** |
+
+
 
 
 
@@ -72,6 +79,10 @@ Enjoy your brand new SeedHead Database!
 2. Add your offer zones
 3. Delete Seeds
 4. Delete Offer Zones
+5. Add review to Seeds
+6. View Seed Reviews
+7. View Top Seeds
+8. Rate Seeds
 
 
 
