@@ -44,8 +44,9 @@ namespace SeedHead.Controllers
 
         public IActionResult Edit(int id)
         {
-            var thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
             ViewBag.OfferId = new SelectList(db.Offers, "OfferId", "Name");
+            Seed thisSeed = db.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            
             return View(thisSeed);
         }
 
