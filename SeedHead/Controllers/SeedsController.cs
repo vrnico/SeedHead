@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SeedHead.Models;
-
+using SeedHead.Models.Repositories;
 
 namespace SeedHead.Controllers
 {
@@ -78,8 +78,8 @@ namespace SeedHead.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
-            seedRepo.Seeds.Remove(thisSeed);
+          
+            seedRepo.Delete(id);
             
             return RedirectToAction("Index");
         }
