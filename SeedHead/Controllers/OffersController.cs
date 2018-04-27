@@ -6,22 +6,39 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SeedHead.Models;
+using SeedHead.Models.Repositories;
 
 
 namespace SeedHead.Controllers
 {
     public class OffersController : Controller
     {
+        private IOfferRepository offerRepo;
         private SeedHeadContext db = new SeedHeadContext();
+
+        public OffersController(IOfferRepository repo = null)
+        {
+            if (repo == null)
+            {
+                this.offerRepo = new EFOfferRepository();
+            }
+            else
+            {
+                this.offerRepo = repo;
+            }
+        }
+
+
+
+
         public IActionResult Index()
         {
-            List<Offer> model = db.Offers.ToList();
+            List<Offer> model = offerRepo.Offers.ToList();
             return View(model);
         }
         public IActionResult Details(int id)
         {
-            var thisOffer = db.Offers.Include(offer => offer.Seeds)
-            .FirstOrDefault(offers => offers.OfferId == id);
+            Offer thisOffer = offerRepo.Offers.FirstOrDefault(offers => offers.OfferId == id);
             return View(thisOffer);
         }
         public IActionResult Create()
@@ -31,33 +48,41 @@ namespace SeedHead.Controllers
         [HttpPost]
         public IActionResult Create(Offer offer)
         {
-            db.Offers.Add(offer);
-            db.SaveChanges();
+            offerRepo.Save(offer);
             return RedirectToAction("Index");
         }
         public IActionResult Edit(int id)
         {
-            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            Offer thisOffer = offerRepo.Offers.FirstOrDefault(offers => offers.OfferId == id);
             return View(thisOffer);
         }
         [HttpPost]
         public IActionResult Edit(Offer offer)
         {
-            db.Entry(offer).State = EntityState.Modified;
-            db.SaveChanges();
+            offerRepo.Edit(offer);
             return RedirectToAction("Index");
         }
         public ActionResult Delete(int id)
         {
-            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            Offer thisOffer = offerRepo.Offers.FirstOrDefault(offers => offers.OfferId == id);
             return View(thisOffer);
         }
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
-            db.Offers.Remove(thisOffer);
-            db.SaveChanges();
+            Offer thisOffer = offerRepo.Offers.FirstOrDefault(offers => offers.OfferId == id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteAll()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteAll")]
+        public IActionResult DeleteAllOffers()
+        {
+            offerRepo.DeleteAll();
             return RedirectToAction("Index");
         }
 
