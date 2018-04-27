@@ -5,36 +5,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="home"><a href="/"><i class="fas fa-leaf fa-2x"></i></a></h1>
-<h1>Offer Zones</h1>
-<hr />
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
-    </tr>
+<div class="title">
+    <h2>
+        <a href="/">
+            <i class="fas fa-leaf fa-2x"></i>
+        </a>
+    </h2>
+    <h2>Offer Zone List</h2>
+</div>
+<div class="banner">
+    <ul class="createBar text-center">
+        <li class="name btn">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            @Html.ActionLink("Create New", "Create")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-seedling"></i>
+            @Html.ActionLink("Seed List", "Index", "Seeds")
+        </li>
+    </ul>
+</div>
 
-    @foreach (var listOffer in Model)
-    {
+<div class="container">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelOffer => listOffer.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = listOffer.OfferId }) |
-                @Html.ActionLink("Details", "Details", new { id = listOffer.OfferId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = listOffer.OfferId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Offered By
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
 
-<h2>
-    @Html.ActionLink("Create New Offering Profile", "Create", "Offers")
-</h2>
+        @foreach (var listOffer in Model)
+        {
+            <tr>
+                <td>
 
-<h2>
-    @Html.ActionLink("Seed List", "Index", "Seeds")
-</h2>
+
+                    @Html.DisplayFor(modelSeed => listOffer.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = listOffer.OfferId }) |
+                    @Html.ActionLink("Details", "Details", new { id = listOffer.OfferId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = listOffer.OfferId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -14,6 +14,7 @@ namespace SeedHead.Controllers
     {
     
         private ISeedRepository seedRepo;
+        public SeedHeadContext db = new SeedHeadContext();
 
         public SeedsController(ISeedRepository repo = null)
         {

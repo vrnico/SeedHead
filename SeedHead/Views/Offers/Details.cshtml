@@ -4,9 +4,37 @@
     ViewData["Title"] = "Offer - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Offer Zone Details</h2>
-<hr />
-@Html.HiddenFor(model => model.OfferId)
-<p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
+<div class="title">
+    <h2>
+        <a href="/">
+            <i class="fas fa-leaf fa-2x"></i>
+        </a>
+    </h2>
+    <h2>@Html.DisplayFor(model => model.Name) Details</h2>
+</div>
 
-<p>@Html.ActionLink("Edit", "Edit", new { id = Model.OfferId }) | @Html.ActionLink("Back to List", "Index")</p>
+<div class="banner">
+    <ul class="createBar text-center">
+        <li class="name btn">
+            <i class="fa fa-allergies" aria-hidden="true"></i>
+            @Html.ActionLink("Offer List", "Index")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-seedling"></i>
+            @Html.ActionLink("Seed List", "Index", "Seeds")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-pencil-alt"></i>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.OfferId })
+
+        </li>
+
+    </ul>
+</div>
+<hr />
+<br />
+<div class="container">
+    @Html.HiddenFor(model => model.OfferId)
+    <h1><span class="name">Name: </span>  @Html.DisplayFor(model => model.Name)</h1>
+</div>
+

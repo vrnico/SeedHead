@@ -10,27 +10,45 @@
     <title>SeedHead - Create</title>
 </head>
 <body>
-    <h2>Create</h2>
-    <hr />
-    <div class="row">
+    <div class="title">
         <h2>
-            Add a new Offer Zone
+            <a href="/">
+                <i class="fas fa-leaf fa-2x"></i>
+            </a>
         </h2>
-        <p class="font-weight-light">An offer zone is a house, company, organization, or individual commited to providing their seeds to other users. </p>
+        <h2>Create an Offer Zone Profile</h2>
     </div>
-    
+    <div class="banner">
+        <ul class="createBar text-center">
+            <li class="name btn">
+                <i class="fa fa-allergies" aria-hidden="true"></i>
+                @Html.ActionLink("Offer List", "Index")
+            </li>
+            <li class="name btn">
+                <i class="fas fa-seedling"></i>
+                @Html.ActionLink("Seed List", "Index", "Seeds")
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <hr />
+        <br />
+    <p class="font-weight-light">An offer zone is a house, company, organization, or individual commited to providing their seeds to other users. </p>
+
     @using (Html.BeginForm())
     {
         <label> @Html.LabelFor(model => model.Name)</label>
+        <br />
         @Html.TextBoxFor(model => model.Name)
         <br />
         @Html.HiddenFor(model => model.OfferId)
 
+        <br />
+        <br />
 
-
-        <input type="submit" value="Add New Offer Zone" />
+        <input type="submit" value="Add New Offer Zone" class="btn-lg"/>
     }
     <br />
-    <p>@Html.ActionLink("Back to list", "Index")</p>
+    </div>
 </body>
 </html>
