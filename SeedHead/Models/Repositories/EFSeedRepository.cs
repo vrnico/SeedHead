@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SeedHead.Models
+namespace SeedHead.Models.Repositories
 {
     public class EFSeedRepository : ISeedRepository
     {
@@ -12,6 +12,9 @@ namespace SeedHead.Models
 
         public IQueryable<Seed> Seeds
         { get { return db.Seeds; } }
+
+        public IQueryable<Offer> Offers
+        { get { return db.Offers; } }
 
         public Seed Save(Seed seed)
         {
@@ -27,10 +30,15 @@ namespace SeedHead.Models
             return seed;
         }
 
-        public void Remove(Seed seed)
+        public void Delete(Seed seed)
         {
             db.Seeds.Remove(seed);
             db.SaveChanges();
+        }
+
+        public void DeleteAll()
+        {
+            db.Database.ExecuteSqlCommand("DELETE FROM Seeds;");
         }
     }
 }

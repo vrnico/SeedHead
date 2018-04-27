@@ -84,5 +84,17 @@ namespace SeedHead.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult DeleteAll()
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("DeleteAll")]
+        public IActionResult DeleteAllSeeds()
+        {
+            seedRepo.DeleteAll();
+            return RedirectToAction("Index");
+        }
+
     }
 }
