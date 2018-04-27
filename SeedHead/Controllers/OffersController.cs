@@ -38,7 +38,6 @@ namespace SeedHead.Controllers
         public IActionResult Edit(int id)
         {
             var thisOffer = db.Offers.FirstOrDefault(offers => offers.OfferId == id);
-            ViewBag.OfferId = new SelectList(db.Seeds, "SeedId", "Name");
             return View(thisOffer);
         }
         [HttpPost]

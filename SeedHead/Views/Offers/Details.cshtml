@@ -1,0 +1,12 @@
+﻿@model SeedHead.Models.Offer
+
+@{
+    ViewData["Title"] = "Offer - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Offer Zone Details</h2>
+<hr />
+@Html.HiddenFor(model => model.OfferId)
+<p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
+
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.OfferId }) | @Html.ActionLink("Back to List", "Index")</p>
