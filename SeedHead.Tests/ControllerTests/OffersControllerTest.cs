@@ -40,6 +40,41 @@ namespace SeedHead.Tests.ControllerTests
             Assert.IsInstanceOfType(result, typeof(ActionResult));
         }
 
+        [TestMethod]
+        public void Mock_IndexContainsModelData_List()
+        {
+            // Arrange
+            DbSetup();
+            ViewResult indexView = new OffersController(mock.Object).Index() as ViewResult;
+
+            // Act
+            var result = indexView.ViewData.Model;
+
+            // Assert
+            Assert.IsInstanceOfType(result, typeof(List<Offer>));
+        }
+
+        [TestMethod]
+        public void Mock_GetDetails_ReturnsView()
+        {
+            // Arrange
+            Offer testOffer = new Offer();
+            {
+
+            };
+
+            DbSetup();
+            OffersController controller = new OffersController(mock.Object);
+
+            // Act
+            var resultView = controller.Details(testOffer.OfferId) as ViewResult;
+            var model = resultView.ViewData.Model as Offer;
+
+            // Assert
+            Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+            Assert.IsInstanceOfType(model, typeof(Offer));
+        }
+
     }
 
 }

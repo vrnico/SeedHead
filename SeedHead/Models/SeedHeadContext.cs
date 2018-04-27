@@ -8,9 +8,9 @@ namespace SeedHead.Models
         {
         }
 
-        public DbSet<Offer> Offers { get; set; }
+        public virtual DbSet<Offer> Offers { get; set; }
 
-        public DbSet<Seed> Seeds { get; set; }
+        public virtual DbSet<Seed> Seeds { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
