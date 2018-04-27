@@ -22,14 +22,11 @@
 
   <ItemGroup>
     <Content Remove="Views\Shared\_Layout.cshtml" />
+    <Content Remove="wwwroot\site.css" />
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="ScaffoldingReadMe.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
   </ItemGroup>
 
   <ItemGroup>
