@@ -11,8 +11,26 @@
     text-align: center;
 }
 
+
 .title h2 {
     font-weight: bold;
     text-align: center;
     font-style: italic;
 }
+
+.name {
+    font-weight: bold;
+}
+
+
+.createBar li {
+    display: inline;
+    background-color: #f3f6f6;
+    float: left;
+   
+}
+
+.createBar a {
+    padding: 1em;
+}
+

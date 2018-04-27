@@ -4,12 +4,38 @@
     ViewData["Title"] = "Seed - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Seed Details</h2>
-<hr />
-@Html.HiddenFor(model => model.SeedId)
-<p>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</p>
-<p>@Html.DisplayNameFor(model => model.Amount): @Html.DisplayFor(model => model.Amount) parcels available</p>
-<p>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</p>
-<p>@Html.DisplayNameFor(model => model.OfferId) : @Html.DisplayFor(model => model.OfferId)</p>
+<div class="title">
+<h2>
+    <a href="/">
+        <i class="fas fa-leaf fa-2x"></i>
+    </a>
+</h2>
+<h2>@Html.DisplayFor(model => model.Name) Details</h2>
+</div>
+<div class="banner">
+    <ul class="createBar text-center">
+        <li class="name btn">
+            <i class="fa fa-seedling" aria-hidden="true"></i>
+            @Html.ActionLink("Seed List", "Index")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-allergies"></i>
+            @Html.ActionLink("Offer List", "Index", "Offers")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-pencil-alt"></i>
+            @Html.ActionLink("Edit" , "Edit", new { id = Model.SeedId })
+            
+        </li>
 
-<p>@Html.ActionLink("Edit", "Edit", new { id = Model.SeedId }) | @Html.ActionLink("Back to List", "Index")</p>
+    </ul>
+</div>
+<hr />
+<div class="container">
+    @Html.HiddenFor(model => model.SeedId)
+    <p><span class="name">Name: </span> @Html.DisplayFor(model => model.Name)</p>
+    <p><span class="name">Amount: </span> @Html.DisplayFor(model => model.Amount) parcels available</p>
+    <p>@Html.DisplayFor(model => model.Description)</p>
+    <p><span class="name">Offered By:</span> @Html.DisplayFor(model => model.OfferId)</p>
+
+    

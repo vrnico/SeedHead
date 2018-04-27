@@ -11,12 +11,21 @@
     <div class="banner">
         <p>share the seeds, grow the seeds, grow the community</p>
     </div>
-    <div class="container">
-        <div class="title">
-            <h2>SeedHead.</h2>
-        </div>
-        <h2>@Html.ActionLink("Seed list", "Index", "Seeds")</h2>
-        <h2>@Html.ActionLink("Offer list", "Index", "Offers")</h2>
+
+    <div class="title">
+        <h2>SeedHead.</h2>
+    </div>
+    <div class="banner">
+        <ul class="createBar text-center">
+            <li class="name btn">
+                <i class="fa fa-seedling" aria-hidden="true"></i>
+                @Html.ActionLink("Seed List", "Index")
+            </li>
+            <li class="name btn">
+                <i class="fas fa-allergies"></i>
+                @Html.ActionLink("Offer List", "Index", "Offers")
+            </li>
+        </ul>
     </div>
 </body>
 </html>

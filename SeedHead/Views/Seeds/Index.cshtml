@@ -4,43 +4,55 @@
     ViewData["Title"] = "Seed";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1 class="home"><a href="/"><i class="fas fa-leaf fa-2x"></i></a></h1>
-<h2>Seed List</h2>
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            Offered By
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var listSeed in Model)
-    {
+<div class="title">
+    <h2>
+        <a href="/">
+            <i class="fas fa-leaf fa-2x"></i>
+        </a>
+    </h2>
+    <h2>Seed List</h2>
+</div>
+<div class="banner">
+    <ul class="createBar text-center">
+        <li class="name btn">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            @Html.ActionLink("Create New", "Create")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-allergies"></i>
+            @Html.ActionLink("Offer List", "Index", "Offers")
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <table class="table">
         <tr>
-            <td>
-
-              
-                @Html.DisplayFor(modelSeed => listSeed.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelSeed => listSeed.Offer.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = listSeed.SeedId }) |
-                @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = listSeed.SeedId })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Offered By
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
-<h2>
-    @Html.ActionLink("Create New", "Create")
-</h2>
-<h2>
-    @Html.ActionLink("Offer List", "Index", "Offers")
-</h2>
+
+        @foreach (var listSeed in Model)
+        {
+            <tr>
+                <td>
+
+
+                    @Html.DisplayFor(modelSeed => listSeed.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelSeed => listSeed.Offer.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = listSeed.SeedId }) |
+                    @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = listSeed.SeedId })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -10,24 +10,54 @@
     <title>SeedHead - Create</title>
 </head>
 <body>
-    <h2>Create</h2>
-    <hr />
-    <h4>Add a new Seed</h4>
-    @using (Html.BeginForm())
+    <div class="title">
+        <h2>
+            <a href="/">
+                <i class="fas fa-leaf fa-2x"></i>
+            </a>
+        </h2>
+        <h2>Create a Seed Profile</h2>
+    </div>
+    <div class="banner">
+        <ul class="createBar text-center">
+            <li class="name btn">
+                <i class="fa fa-seedling" aria-hidden="true"></i>
+                @Html.ActionLink("Seed List", "Index")
+            </li>
+            <li class="name btn">
+                <i class="fas fa-allergies"></i>
+                @Html.ActionLink("Offer List", "Index", "Offers")
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <hr />
+        <h4>Add a new Seed</h4>
+
+        @using (Html.BeginForm())
     {
-        @Html.LabelFor(model => model.Name)
+        <label>@Html.LabelFor(model => model.Name)</label>
+        <br />
         @Html.TextBoxFor(model => model.Name)
+        <br />
+        <label>@Html.LabelFor(model => model.Amount)</label>
+        <br />
+        @Html.TextBoxFor(model => model.Amount)
+        <br />
 
         @Html.HiddenFor(model => model.SeedId)
-        @Html.LabelFor(model => model.Description)
-        @Html.TextBoxFor(model => model.Description)
-        @Html.LabelFor(model => model.Amount)
-        @Html.TextBoxFor(model => model.Amount)
+        <label>@Html.LabelFor(model => model.Description)</label>
+        <br />
+        <text-area>  @Html.TextBoxFor(model => model.Description)</text-area>
 
-        @Html.LabelFor(model => model.OfferId)
+        <br />
+        <br />
+       <label>Offered By:</label>
+       <br />
         @Html.DropDownList("OfferId")
-        <input type="submit" value="Add new seed" />
-    }
-    <p>@Html.ActionLink("Back to list", "Index")</p>
+        <input type="submit" value="Add New Seed" />
+}
+    </div>
+    </div>
 </body>
 </html>

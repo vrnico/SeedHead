@@ -10,13 +10,14 @@
     <title>Seed List - Edit</title>
 </head>
 <body>
-    <h2>Edit</h2>
-    <hr />
-    <h4>Edit @Html.DisplayFor(model => model.Name)?</h4>
-    <h4>Description: @Html.DisplayFor(model => model.Description)</h4>
-    <h4>Amount Remaining: @Html.DisplayFor(model => model.Amount)</h4>
+    <div class="container">
+        <h2>Edit</h2>
+        <hr />
+        <h4>Edit @Html.DisplayFor(model => model.Name)?</h4>
+        <h4><span class="name">Description:</span> @Html.DisplayFor(model => model.Description)</h4>
+        <h4><span class="name">Amount Remaining:</span> @Html.DisplayFor(model => model.Amount)</h4>
 
-    @using (Html.BeginForm())
+        @using (Html.BeginForm())
     {
         @Html.HiddenFor(model => model.SeedId)
 
@@ -35,8 +36,8 @@
         @Html.DropDownList("OfferId")
 
         <input type="submit" value="Save" />
-    }
-    <p>@Html.ActionLink("Back to list", "Index")</p>
-
+}
+        
+    </div>
 </body>
 </html>
