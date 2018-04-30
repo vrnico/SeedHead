@@ -33,9 +33,11 @@
 <hr />
 <div class="container">
     @Html.HiddenFor(model => model.SeedId)
+    @Html.HiddenFor(model => model.OfferId)
     <p><span class="name">Name: </span> @Html.DisplayFor(model => model.Name)</p>
     <p><span class="name">Amount: </span> @Html.DisplayFor(model => model.Amount) parcels available</p>
     <p>@Html.DisplayFor(model => model.Description)</p>
-    <p><span class="name">Offered By:</span> @Html.DisplayFor(model => model.OfferId)</p>
+    <p><span class="name">Offered By:</span> @Html.DisplayFor(model => model.Offer.Name)</p>
 
-    
+    </div>
+

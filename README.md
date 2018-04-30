@@ -2,7 +2,7 @@
 ==========
 #### A .Net Application by Nico Daunt
 
-### Epicodus Weeks One and Two .Net Code Review on Typescript and Angular.
+### Epicodus Weeks One and Two .Net Code Review on  MVC BDD.
 
 #### Description
 SeedHead is a community resource for gardeners and farmers of all sorts. Our goal is to connect growers with the seeds they need, and to provide an interface for seed collectors to share their stash!

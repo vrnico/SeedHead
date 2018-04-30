@@ -37,6 +37,8 @@ namespace SeedHead.Controllers
         public IActionResult Details(int id)
         {
             Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
+            ViewBag.OfferId = new SelectList(seedRepo.Offers, "OfferId", "Name");
+            Seed model = seedRepo.Seeds.Include(s => s.Offer).FirstOrDefault(s => s.SeedId == id);
             return View(thisSeed);
         }
 

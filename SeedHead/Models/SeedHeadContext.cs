@@ -12,6 +12,8 @@ namespace SeedHead.Models
 
         public virtual DbSet<Seed> Seeds { get; set; }
 
+        public virtual DbSet<Review> Reviews { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseMySql(@"Server=localhost;Port=8889;database=seedhead;uid=root;pwd=root;");
