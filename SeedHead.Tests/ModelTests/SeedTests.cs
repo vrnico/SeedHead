@@ -11,18 +11,21 @@ namespace SeedHead.Tests
     public class SeedTests
     {
         [TestMethod]
-        public void GetDescription_ReturnsSeedDescription_String()
+        public void GetSeed_ReturnsSeedData_String()
         {
             //Arrange
-            var seed = new Seed();
-
-            seed.Description = "cool";
-
+            Seed seed = new Seed("Amaranth", 40, "A plant");
             //Act
-            var result = seed.Description;
-
+            int id = seed.SeedId;
+            string name = seed.Name;
+            int amount = seed.Amount;
+            string description = seed.Description;
+            
             //Assert
-            Assert.AreEqual("cool", result);
+            Assert.AreEqual(id, 0);
+            Assert.AreEqual(name, "Amaranth");
+            Assert.AreEqual(amount, 40);
+            Assert.AreEqual(description, "A plant");
         }
     }
 }

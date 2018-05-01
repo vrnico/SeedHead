@@ -17,6 +17,16 @@ namespace SeedHead.Models
         public string Name { get; set; }
         public virtual ICollection<Seed> Seeds { get; set; }
 
+        public Offer(string name)
+        {
+            Name = name;
+        }
+
+
+        public Offer()
+        {
+        }
+
 
         public override bool Equals(object offerNon)
         {

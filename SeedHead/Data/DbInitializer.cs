@@ -15,6 +15,7 @@ namespace SeedHead.Data
                 return;
             }
 
+
             var offers = new Offer[]
            {
                new Offer(){ Name = "Human Flesh Body World" },
@@ -60,7 +61,9 @@ namespace SeedHead.Data
                 context.Offers.Add(o);
             }
 
-   
+
+
+
 
             context.SaveChanges();
         }

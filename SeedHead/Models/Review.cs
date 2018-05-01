@@ -24,6 +24,21 @@ namespace SeedHead.Models
         
         public virtual Seed Seed { get; set; }
 
+        public Review(string name)
+        {
+            Name = name;
+            Rating = 0;
+            Description = Description;
+            SeedId = 0;
+
+
+        }
+
+
+        public Review()
+        {
+        }
+
 
 
 

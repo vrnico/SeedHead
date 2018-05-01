@@ -22,6 +22,21 @@ namespace SeedHead.Models
         public virtual Offer Offer { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
 
+        public Seed(string name, int amount, string description)
+        {
+            Name = name;
+            Amount = amount;
+            Description = description;
+            OfferId = 0;
+
+
+        }
+
+
+        public Seed()
+        {
+        }
+
 
 
 
