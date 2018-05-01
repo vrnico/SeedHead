@@ -1,6 +1,9 @@
 ﻿@model SeedHead.Models.Seed
 
 
+
+
+
 @{
     ViewData["Title"] = "Seed - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -47,8 +50,25 @@
 
     <hr />
     <h3>@Html.DisplayFor(model => model.Name) Reviews</h3>
+    @{
+        if (Model.Reviews.Count() == 0)
+        {
+            <p>Whoopsy. Looks like there are no reviews available! Got something to say? @Html.ActionLink("Be the first to review", "Create", "Reviews", new { id = Model.SeedId }) @Html.DisplayFor(model => model.Name) </p>
 
- 
+        }
+        else
+        {
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="jumbotron">
+                    <h3>@review.Name</h3>
+                    <h4>@review.Rating</h4>
+                    <p>@review.Description</p>
+                </div>
+            }
+        }
+    }
+
 
 
 </div>

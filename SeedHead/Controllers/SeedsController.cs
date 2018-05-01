@@ -40,9 +40,9 @@ namespace SeedHead.Controllers
         {
             Seed thisSeed = seedRepo.Seeds.FirstOrDefault(seeds => seeds.SeedId == id);
            
-            Seed model = seedRepo.Seeds.Include(s => s.Offer).FirstOrDefault(s => s.SeedId == id);
+            Seed model = seedRepo.Seeds.Include(s => s.Offer).Include(r => r.Reviews).FirstOrDefault(s => s.SeedId == id);
            
-            return View(thisSeed);
+            return View(model);
         }
 
         public IActionResult Create()

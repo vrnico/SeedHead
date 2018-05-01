@@ -33,8 +33,8 @@ namespace SeedHead.Controllers
 
         public IActionResult Index()
         {
-            List<Review> model = reviewRepo.Reviews.Include(seeds => seeds.SeedId).ToList();
-            return View(model);
+           
+            return View();
         }
 
         public IActionResult Details(int id)
@@ -54,7 +54,7 @@ namespace SeedHead.Controllers
         [HttpPost]
         public IActionResult Create(Review review)
         {
-
+            
             reviewRepo.Save(review);
 
             return RedirectToAction("Index");

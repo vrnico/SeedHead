@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Seed - Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int seed = ViewBag.Seed.SeedId;
 }
 
 <html>
@@ -36,8 +37,8 @@
 
         @using (Html.BeginForm())
     {
-        @Html.HiddenFor(model => model.ReviewId)
-        @Html.HiddenFor(model => model.SeedId)
+
+        @Html.Hidden("SeedId", seed)
         <label>@Html.LabelFor(model => model.Name)</label>
         <br />
         @Html.TextBoxFor(model => model.Name)
