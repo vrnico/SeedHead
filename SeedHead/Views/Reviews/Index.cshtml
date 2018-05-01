@@ -4,5 +4,31 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Your review has been submitted</h2>
-<hr />
+<div class="title">
+    <h2>
+        <a href="/">
+            <i class="fas fa-leaf fa-2x"></i>
+        </a>
+    </h2>
+    <br />
+</div>
+<div class="banner">
+    <ul class="createBar text-center">
+        <li class="name btn">
+            <i class="fa fa-seedling" aria-hidden="true"></i>
+            @Html.ActionLink("Seed List", "Index", "Seeds")
+        </li>
+        <li class="name btn">
+            <i class="fas fa-allergies"></i>
+            @Html.ActionLink("Offer List", "Index", "Offers")
+        </li>
+
+    </ul>
+</div>
+
+<div class="container">
+    <hr />
+    <h2>Your review has been submitted</h2>
+    <h3>A warm thank you for adding your thoughts to our community!</h3>
+
+</div>

@@ -42,6 +42,25 @@ namespace SeedHead.Models
         {
             return this.SeedId.GetHashCode();
         }
+
+        public int GetRating(Seed seed)
+        {
+            if(seed.Reviews.Count > 0)
+            {
+                List<int> ratings = new List<int>();
+                foreach (var review in seed.Reviews)
+                {
+                    ratings.Add(review.Rating);
+                }
+                int avgRating = (int)Math.Round(ratings.Average());
+                return avgRating;
+
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
 

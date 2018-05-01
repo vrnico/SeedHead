@@ -28,7 +28,18 @@
         </ul>
     </div>
     <br />
+    <div class="container">
+
+        <h3>Seeds people are talking about:</h3>
+        <div class="row text-center">
+
+            @foreach (var seed in Model)
+        {
+            <div class="col-md-3 jumbotron top3"><p>@Html.DisplayFor(modelSeed => seed.Name)</p></div>
+    }
+        </div>
+    </div>
     <br />
-  
+
 </body>
 </html>

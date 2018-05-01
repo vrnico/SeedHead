@@ -61,8 +61,8 @@
             @foreach (var review in Model.Reviews)
             {
                 <div class="jumbotron">
-                    <h3>@review.Name</h3>
-                    <h4>@review.Rating</h4>
+                    <h4>author: @review.Name</h4>
+                    <h4>rating: @review.Rating</h4>
                     <p>@review.Description</p>
                 </div>
             }

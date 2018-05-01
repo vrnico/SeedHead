@@ -45,10 +45,10 @@
         <br />
         <label>@Html.LabelFor(model => model.Rating)</label>
         <br />
-        @Html.TextBoxFor(model => model.Rating)
+        @Html.TextBoxFor(model => model.Rating, new { @type = "number", @min = "1", @max = "5" })<br />
         <br />
 
-      
+
         <label>@Html.LabelFor(model => model.Description)</label>
         <br />
         <text-area>  @Html.TextBoxFor(model => model.Description)</text-area>
@@ -56,7 +56,7 @@
         <br />
         <br />
 
-        <input type="submit" value="Add New Seed" />
+        <input type="submit" value="Add Review" />
 }
     </div>
     </div>

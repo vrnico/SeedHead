@@ -33,7 +33,7 @@ namespace SeedHead.Controllers
         public ViewResult Index()
         {
         
-            return View(seedRepo.Seeds.Include(seeds => seeds.Offer).ToList());
+            return View(seedRepo.Seeds.Include(seeds => seeds.Offer).Include(r => r.Reviews).ToList());
         }
 
         public IActionResult Details(int id)

@@ -30,8 +30,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
+
             <th>
                 Offered By
+            </th>
+            <th>
+                Average Rating
             </th>
             <th></th>
         </tr>
@@ -47,6 +51,7 @@
                 <td>
                     @Html.DisplayFor(modelSeed => listSeed.Offer.Name)
                 </td>
+                <td>@listSeed.GetRating(@listSeed)</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = listSeed.SeedId }) |
                     @Html.ActionLink("Details", "Details", new { id = listSeed.SeedId }) |
