@@ -50,5 +50,22 @@ namespace SeedHead.Tests
 
         }
 
+        [TestMethod]
+        public void AverageRating_AverageRating()
+        {
+            //Arrange
+            Seed newSeed = new Seed("Amaranth", 40, "A plant");
+            Review newReview = new Review {ReviewId = 1, Name = "Nico", Rating = 5, Description = "Stoked" };
+            Review twoReview = new Review { ReviewId = 2, Name = "Frank", Rating = 3, Description = "Bammer" };
+            newSeed.Reviews = new List<Review> { newReview, twoReview };
+
+            //Act
+            int rating = newSeed.GetRating(newSeed);
+
+            //Assert
+            Assert.AreEqual(rating, 4);
+
+        }
+
     }
 }
