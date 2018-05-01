@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace SeedHead.Models
 
@@ -18,6 +18,9 @@ namespace SeedHead.Models
         public int Rating { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
+     
+
+        [ForeignKey("Seeds")]
         public int SeedId { get; set; }
         public virtual Seed Seed { get; set; }
 

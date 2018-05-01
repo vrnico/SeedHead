@@ -19,6 +19,7 @@ namespace SeedHead.Models
         public string Name { get; set; }
         public int OfferId { get; set; }
         public virtual Offer Offer { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
 
 
 

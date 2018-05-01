@@ -12,7 +12,7 @@ namespace SeedHead.Controllers
 {
     public class ReviewsController : Controller
     {
-
+        private ISeedRepository seedRepo;
         private IReviewRepository reviewRepo;
         public SeedHeadContext db = new SeedHeadContext();
 
@@ -28,10 +28,13 @@ namespace SeedHead.Controllers
             }
         }
 
-        public ViewResult Index()
+        public ViewResult Index(int id)
         {
 
-            return View(reviewRepo.Reviews.Include(reviews => reviews.Seed).ToList());
+            List<Review> model = reviewRepo.Reviews.Where(r => r.SeedId == id).Include(r => r.Seed).ToList();
+            Seed seed = seedRepo.Seeds.Include(s => s.Reviews).FirstOrDefault(s => s.SeedId == id);
+            ViewBag.Seed = seed;
+            return View(model);
         }
 
         public IActionResult Details(int id)
@@ -40,10 +43,10 @@ namespace SeedHead.Controllers
             return View(thisReview);
         }
 
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewBag.SeedId = new SelectList(reviewRepo.Seeds, "SeedId", "Name");
-            return View();
+            ViewBag.Seed = seedRepo.Seeds.FirstOrDefault(s => s.SeedId == id);
+            return View(new Review() { SeedId = id });
 
         }
 

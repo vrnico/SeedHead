@@ -24,8 +24,13 @@
         </li>
         <li class="name btn">
             <i class="fas fa-pencil-alt"></i>
-            @Html.ActionLink("Edit" , "Edit", new { id = Model.SeedId })
-            
+            @Html.ActionLink("Edit", "Edit", new { id = Model.SeedId })
+
+        </li>
+        <li class="name btn">
+            <i class="fas fa-columns"></i>
+            @Html.ActionLink("Write Review", "Create", "Reviews")
+
         </li>
 
     </ul>

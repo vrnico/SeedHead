@@ -8,9 +8,10 @@ using SeedHead.Models;
 namespace SeedHead.Migrations
 {
     [DbContext(typeof(SeedHeadContext))]
-    partial class SeedHeadContextModelSnapshot : ModelSnapshot
+    [Migration("20180430233147_AddReviewTable")]
+    partial class AddReviewTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5");

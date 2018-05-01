@@ -1,0 +1,62 @@
+﻿@model SeedHead.Models.Review
+
+@{
+    ViewData["Title"] = "Review - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title>SeedHead - Create</title>
+</head>
+<body>
+    <div class="title">
+        <h2>
+            <a href="/">
+                <i class="fas fa-leaf fa-2x"></i>
+            </a>
+        </h2>
+        <h2>Create a Review</h2>
+    </div>
+    <div class="banner">
+        <ul class="createBar text-center">
+            <li class="name btn">
+                <i class="fa fa-seedling" aria-hidden="true"></i>
+                @Html.ActionLink("Seed List", "Index")
+            </li>
+            <li class="name btn">
+                <i class="fas fa-allergies"></i>
+                @Html.ActionLink("Offer List", "Index", "Offers")
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <hr />
+        <h4>Add a new Review</h4>
+
+        @using (Html.BeginForm())
+    {
+
+        @Html.HiddenFor(model => model.SeedId)
+        <label>@Html.LabelFor(model => model.Name)</label>
+        <br />
+        @Html.TextBoxFor(model => model.Name)
+        <br />
+        <label>@Html.LabelFor(model => model.Rating)</label>
+        <br />
+        @Html.TextBoxFor(model => model.Rating)
+        <br />
+
+        @Html.HiddenFor(model => model.ReviewId)
+        <label>@Html.LabelFor(model => model.Description)</label>
+        <br />
+        <text-area>  @Html.TextBoxFor(model => model.Description)</text-area>
+
+        <br />
+        <br />
+        <input type="submit" value="Add New Review" />
+}
+    </div>
+    </div>
+</body>
+</html>
