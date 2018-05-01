@@ -31,11 +31,24 @@ namespace SeedHead.Tests
         [TestMethod]
         public void Constructor_ReturnSeed_SeedConstructor()
         {
-            //Arrange
+            //Arrange    Act
             Seed newSeed = new Seed("Amaranth", 40, "A plant");
 
             //Assert
             Assert.AreEqual(newSeed.Name, "Amaranth");
         }
+
+        [TestMethod]
+        public void Equals_TrueIfSame()
+        {
+            //Arrange  Act
+            Seed newSeed = new Seed("Amaranth", 40, "A plant");
+            Seed twoSeed = new Seed("Amaranth", 40, "A plant");
+
+            //Assert
+            Assert.AreEqual(newSeed, twoSeed);
+
+        }
+
     }
 }
