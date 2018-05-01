@@ -32,9 +32,19 @@
     </ul>
 </div>
 <hr />
-<br />
+
 <div class="container">
     @Html.HiddenFor(model => model.OfferId)
-    <h1><span class="name">Name: </span>  @Html.DisplayFor(model => model.Name)</h1>
+    <h1>@Html.DisplayFor(model => model.Name) Seeds</h1>
+    <hr />
+    @foreach (var seed in Model.Seeds)
+    {
+        <div class="jumbotron">
+            <h4>author: @seed.Name</h4>
+            <h4>rating: @seed.Amount</h4>
+            <p>@seed.Description</p>
+        </div>
+    }
+
 </div>
 

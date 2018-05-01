@@ -15,6 +15,7 @@ namespace SeedHead.Controllers
     public class OffersController : Controller
     {
         private IOfferRepository offerRepo;
+        private ISeedRepository seedRepo;
         private SeedHeadContext db = new SeedHeadContext();
 
         public OffersController(IOfferRepository repo = null)
@@ -40,7 +41,9 @@ namespace SeedHead.Controllers
         public IActionResult Details(int id)
         {
             Offer thisOffer = offerRepo.Offers.FirstOrDefault(offers => offers.OfferId == id);
-            return View(thisOffer);
+
+            Offer model = offerRepo.Offers.Include(s => s.Seeds).FirstOrDefault(o => o.OfferId == id);
+            return View(model);
         }
         public IActionResult Create()
         {
