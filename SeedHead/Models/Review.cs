@@ -24,10 +24,10 @@ namespace SeedHead.Models
         
         public virtual Seed Seed { get; set; }
 
-        public Review(string name)
+        public Review(string name, int rating, string description)
         {
             Name = name;
-            Rating = 0;
+            Rating = rating;
             Description = Description;
             SeedId = 0;
 

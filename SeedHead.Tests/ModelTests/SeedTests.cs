@@ -27,5 +27,15 @@ namespace SeedHead.Tests
             Assert.AreEqual(amount, 40);
             Assert.AreEqual(description, "A plant");
         }
+
+        [TestMethod]
+        public void Constructor_ReturnSeed_SeedConstructor()
+        {
+            //Arrange
+            Seed newSeed = new Seed("Amaranth", 40, "A plant");
+
+            //Assert
+            Assert.AreEqual(newSeed.Name, "Amaranth");
+        }
     }
 }
