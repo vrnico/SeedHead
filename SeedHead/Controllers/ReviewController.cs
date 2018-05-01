@@ -31,12 +31,9 @@ namespace SeedHead.Controllers
             }
         }
 
-        public ViewResult Index(int id)
+        public IActionResult Index()
         {
-
-            List<Review> model = reviewRepo.Reviews.Where(r => r.SeedId == id).Include(r => r.Seed).ToList();
-            Seed seed = seedRepo.Seeds.Include(s => s.Reviews).FirstOrDefault(s => s.SeedId == id);
-            ViewBag.Seed = seed;
+            List<Review> model = reviewRepo.Reviews.Include(seeds => seeds.SeedId).ToList();
             return View(model);
         }
 
@@ -48,14 +45,16 @@ namespace SeedHead.Controllers
 
         public IActionResult Create(int id)
         {
-            ViewBag.Seed = seedRepo.Seeds.FirstOrDefault(s => s.SeedId == id);
-            return View(new Review() { SeedId = id });
+            Seed thisSeed = reviewRepo.Seeds.FirstOrDefault(Seeds => Seeds.SeedId == id);
+            ViewBag.Seed = thisSeed;
+            return View();
 
         }
 
         [HttpPost]
         public IActionResult Create(Review review)
         {
+
             reviewRepo.Save(review);
 
             return RedirectToAction("Index");
