@@ -3,12 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using SeedHead.Models;
+using SeedHead.Data;
 
 namespace SeedHead.Migrations
 {
     [DbContext(typeof(SeedHeadContext))]
-    [Migration("20180427055344_Initial")]
+    [Migration("20180501165002_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,26 @@ namespace SeedHead.Migrations
                     b.HasKey("OfferId");
 
                     b.ToTable("Offers");
+                });
+
+            modelBuilder.Entity("SeedHead.Models.Review", b =>
+                {
+                    b.Property<int>("ReviewId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<int>("SeedId");
+
+                    b.HasKey("ReviewId");
+
+                    b.HasIndex("SeedId");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("SeedHead.Models.Seed", b =>
@@ -46,6 +66,14 @@ namespace SeedHead.Migrations
                     b.HasIndex("OfferId");
 
                     b.ToTable("Seeds");
+                });
+
+            modelBuilder.Entity("SeedHead.Models.Review", b =>
+                {
+                    b.HasOne("SeedHead.Models.Seed", "Seed")
+                        .WithMany("Reviews")
+                        .HasForeignKey("SeedId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("SeedHead.Models.Seed", b =>

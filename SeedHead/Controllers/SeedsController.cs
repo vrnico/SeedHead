@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SeedHead.Models;
 using SeedHead.Models.Repositories;
+using SeedHead.Data;
 
 namespace SeedHead.Controllers
 {

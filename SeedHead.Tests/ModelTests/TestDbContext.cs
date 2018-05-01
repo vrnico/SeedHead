@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SeedHead.Models;
 
-namespace SeedHead.Models
+namespace SeedHead.Data
 {
     public class TestDbContext : SeedHeadContext
     {

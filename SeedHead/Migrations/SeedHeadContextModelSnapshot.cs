@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using SeedHead.Models;
+using SeedHead.Data;
 
 namespace SeedHead.Migrations
 {
@@ -70,7 +70,7 @@ namespace SeedHead.Migrations
             modelBuilder.Entity("SeedHead.Models.Review", b =>
                 {
                     b.HasOne("SeedHead.Models.Seed", "Seed")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("SeedId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

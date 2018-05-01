@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using SeedHead.Data;
 
 namespace SeedHead
 {
@@ -18,6 +20,21 @@ namespace SeedHead
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
+
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    var context = services.GetRequiredService<SeedHeadContext>();
+                    DbInitializer.Initialize(context);
+                }
+                catch (Exception)
+                {
+
+                }
+            }
 
             host.Run();
         }

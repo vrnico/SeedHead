@@ -1,6 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SeedHead.Models;
 
-namespace SeedHead.Models
+namespace SeedHead.Data
+
 {
     public class SeedHeadContext : DbContext
     {
@@ -26,6 +33,8 @@ namespace SeedHead.Models
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Offer>().ToTable("Offers");
+            builder.Entity<Seed>().ToTable("Seeds");
             base.OnModelCreating(builder);
         }
     }

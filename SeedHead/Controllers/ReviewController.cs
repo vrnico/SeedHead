@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SeedHead.Models;
 using SeedHead.Models.Repositories;
+using SeedHead.Data;
 
 namespace SeedHead.Controllers
 {
@@ -16,11 +17,13 @@ namespace SeedHead.Controllers
         private IReviewRepository reviewRepo;
         public SeedHeadContext db = new SeedHeadContext();
 
+
         public ReviewsController(IReviewRepository repo = null)
         {
             if (repo == null)
             {
                 this.reviewRepo = new EFReviewRepository();
+                this.seedRepo = new EFSeedRepository();
             }
             else
             {

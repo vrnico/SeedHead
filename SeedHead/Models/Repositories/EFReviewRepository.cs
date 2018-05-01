@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SeedHead.Data;
 using System.Threading.Tasks;
 
 namespace SeedHead.Models.Repositories
