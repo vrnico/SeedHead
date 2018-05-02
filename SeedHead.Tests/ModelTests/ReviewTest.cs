@@ -29,5 +29,21 @@ namespace SeedHead.Tests
             //Assert
             Assert.AreEqual(newReview.Name, "Nico");
         }
+
+        [TestMethod]
+        public void RatingOneThruFive_ReturnTrueIfRange_True()
+        {
+            //Arrange
+            Review newReview = new Review("Nico", 5, "Good plant");
+            Review twoReview = new Review("Nico", 10, "Good plant");
+
+            //Act
+            bool newResult = newReview.RatingOneThruFive();
+            bool twoResult = twoReview.RatingOneThruFive();
+
+            //Assert
+            Assert.IsTrue(newResult);
+            Assert.IsFalse(twoResult);
+        }
     }
 }

@@ -17,7 +17,9 @@ namespace SeedHead.Models
 
         [Key]
         public int ReviewId { get; set; }
+        [Range(1, 5)]
         public int Rating { get; set; }
+        [StringLength(255)]
         public string Description { get; set; }
         public string Name { get; set; }
         public int SeedId { get; set; }
@@ -58,6 +60,30 @@ namespace SeedHead.Models
         public override int GetHashCode()
         {
             return this.ReviewId.GetHashCode();
+        }
+
+        public bool RatingOneThruFive()
+        {
+            if (Rating <= 0 || Rating > 5)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public bool DescLength()
+        {
+            if (Description.Length > 255)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
