@@ -90,6 +90,25 @@ namespace SeedHead.Tests.ControllerTests
             db.DeleteAll();
         }
 
+        [TestMethod]
+        public void TestDB_OfferEdit_Updates()
+        {
+            //Arrange
+            OffersController controller = new OffersController(db);
+            Offer newOffer = new Offer { OfferId = 1, Name = "HFBW" };
+           
+
+
+            //Act
+            controller.Create(newOffer);
+            newOffer.Name = "Human Flesh Body World";
+            controller.Edit(newOffer);
+            var offerOutput = (controller.Details(1) as ViewResult).ViewData.Model as Offer;
+
+            Assert.AreEqual(offerOutput.Name, "Human Flesh Body World");
+            db.DeleteAll();
+        }
+
     }
 
 }
