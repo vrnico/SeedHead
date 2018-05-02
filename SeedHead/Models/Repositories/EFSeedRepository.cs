@@ -11,6 +11,15 @@ namespace SeedHead.Models.Repositories
     {
         SeedHeadContext db = new SeedHeadContext();
 
+        public EFSeedRepository()
+        {
+            db = new SeedHeadContext();
+        }
+        public EFSeedRepository(SeedHeadContext thisDb)
+        {
+            db = thisDb;
+        }
+
         public IQueryable<Seed> Seeds
         { get { return db.Seeds; } }
 

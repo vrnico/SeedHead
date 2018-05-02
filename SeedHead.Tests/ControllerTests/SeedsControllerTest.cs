@@ -15,6 +15,7 @@ namespace SeedHead.Tests.ControllerTests
     public class SeedsControllerTests
     {
         Mock<ISeedRepository> mock = new Mock<ISeedRepository>();
+        EFSeedRepository db = new EFSeedRepository(new TestDbContext());
 
 
         private void DbSetup()
@@ -70,6 +71,19 @@ namespace SeedHead.Tests.ControllerTests
 
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void TestDB_Create_Adds()
+        {
+            SeedsController controller = new SeedsController(db);
+            Seed newSeed = new Seed { SeedId = 100, Name = "Amaranth", Amount = 40, Description = "a plant", OfferId = 1};
+
+            controller.Create(newSeed);
+            var newList = (controller.Index() as ViewResult).ViewData.Model as List<Seed>;
+
+            CollectionAssert.Contains(newList, newSeed);
+            db.DeleteAll();
         }
 
     }
