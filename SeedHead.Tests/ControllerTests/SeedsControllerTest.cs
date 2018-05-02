@@ -16,6 +16,7 @@ namespace SeedHead.Tests.ControllerTests
     {
         Mock<ISeedRepository> mock = new Mock<ISeedRepository>();
         EFSeedRepository db = new EFSeedRepository(new TestDbContext());
+        EFOfferRepository dbOffers = new EFOfferRepository(new TestDbContext());
 
 
         private void DbSetup()
@@ -74,13 +75,22 @@ namespace SeedHead.Tests.ControllerTests
         }
 
         [TestMethod]
-        public void TestDB_Create_Adds()
+        public void TestDB_CreateSeed_Adds()
         {
+            //Arrange
+            OffersController offerController = new OffersController(dbOffers);
             SeedsController controller = new SeedsController(db);
-            Seed newSeed = new Seed { SeedId = 100, Name = "Amaranth", Amount = 40, Description = "a plant", OfferId = 1};
 
+            Offer newOffer = new Offer { OfferId = 1, Name = "HFBW" };
+            Seed newSeed = new Seed { SeedId = 100, Name = "Amaranth", Amount = 40, Description = "A plant", OfferId = 1 };
+
+            //Act
+            
+            offerController.Create(newOffer);
             controller.Create(newSeed);
             var newList = (controller.Index() as ViewResult).ViewData.Model as List<Seed>;
+
+            //Assert
 
             CollectionAssert.Contains(newList, newSeed);
             db.DeleteAll();

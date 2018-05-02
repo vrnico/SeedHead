@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SeedHead.Models;
 using SeedHead.Controllers;
 using System.Linq;
+using SeedHead.Data;
 using SeedHead.Models.Repositories;
 using Moq;
 
@@ -14,6 +15,7 @@ namespace SeedHead.Tests.ControllerTests
     public class OffersControllerTests
     {
         Mock<IOfferRepository> mock = new Mock<IOfferRepository>();
+        EFOfferRepository db = new EFOfferRepository(new TestDbContext());
 
 
         private void DbSetup()
@@ -73,6 +75,19 @@ namespace SeedHead.Tests.ControllerTests
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
             Assert.IsInstanceOfType(model, typeof(Offer));
+        }
+
+        [TestMethod]
+        public void TestDB_CreateOffer_Adds()
+        {
+            OffersController controller = new OffersController(db);
+            Offer newOffer = new Offer { OfferId = 100, Name = "HFBW" };
+
+            controller.Create(newOffer);
+            var newList = (controller.Index() as ViewResult).ViewData.Model as List<Offer>;
+
+            CollectionAssert.Contains(newList, newOffer);
+            db.DeleteAll();
         }
 
     }

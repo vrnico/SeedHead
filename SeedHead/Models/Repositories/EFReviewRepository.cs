@@ -11,6 +11,17 @@ namespace SeedHead.Models.Repositories
     {
         SeedHeadContext db = new SeedHeadContext();
 
+        public EFReviewRepository()
+        {
+            db = new SeedHeadContext();
+        }
+        public EFReviewRepository(SeedHeadContext thisDb)
+        {
+            db = thisDb;
+        }
+
+
+
 
 
         public IQueryable<Review> Reviews

@@ -11,6 +11,15 @@ namespace SeedHead.Models.Repositories
     {
         SeedHeadContext db = new SeedHeadContext();
 
+        public EFOfferRepository()
+        {
+            db = new SeedHeadContext();
+        }
+        public EFOfferRepository(SeedHeadContext thisDb)
+        {
+            db = thisDb;
+        }
+
         public IQueryable<Offer> Offers
         { get { return db.Offers; } }
 
