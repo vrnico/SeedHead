@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SeedHead.Models;
 using SeedHead.Controllers;
 using System.Linq;
+using SeedHead.Data;
 using SeedHead.Models.Repositories;
 using Moq;
 
@@ -20,9 +21,9 @@ namespace SeedHead.Tests.ControllerTests
         {
             mock.Setup(m => m.Seeds).Returns(new Seed[]
             {
-                new Seed {},
-                new Seed {},
-                new Seed {}
+                new Seed {SeedId = 1, Name = "Amaranth", Description = "a plant"},
+                new Seed {SeedId = 2, Name = "Asparagus", Description = "another plant"},
+                new Seed {SeedId = 3, Name = "Appleseeds", Description = "one more plant"}
             }.AsQueryable());
         }
 
@@ -59,10 +60,7 @@ namespace SeedHead.Tests.ControllerTests
         {
             // Arrange
             Seed testSeed = new Seed();
-            {
          
-            };
-
             DbSetup();
             SeedsController controller = new SeedsController(mock.Object);
 
@@ -72,7 +70,6 @@ namespace SeedHead.Tests.ControllerTests
 
             // Assert
             Assert.IsInstanceOfType(resultView, typeof(ViewResult));
-            Assert.IsInstanceOfType(model, typeof(Seed));
         }
 
     }
