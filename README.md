@@ -18,7 +18,7 @@ SeedHead is a community resource for gardeners and farmers of all sorts. Our goa
 
 Open your preferred terminal, and enter the following command to clone source to your local machine:
 ```sh
-https://github.com/vrnico/SeedHead
+git clone https://github.com/vrnico/SeedHead
 ```
 
 navigate to the SeedHead directory:
@@ -31,12 +31,21 @@ restore your dotnet project:
 dotnet restore
 ```
 
+navigate to project folder SeedHead/SeedHead/ :
+```sh
+cd SeedHead
+```
+
 Generate the database
 ```
-$dotnet ef migrations add Initial
 $dotnet ef database update
 ```
-Run program from Visual Studio by pressing ctrl F5 or the play button
+
+Run program from Visual Studio by pressing ctrl F5 or the play button or from console in SeedHead/SeadHead run dotnet app:
+```
+dotnet run
+```
+
 
 
 Enjoy your brand new SeedHead Database!
