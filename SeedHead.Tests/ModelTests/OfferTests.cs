@@ -13,13 +13,24 @@ namespace SeedHead.Tests
             //Arrange
             var offer = new Offer();
 
-            offer.Name = "cool";
+            offer.Name = "HFBW";
 
             //Act
             var result = offer.Name;
 
             //Assert
-            Assert.AreEqual("cool", result);
+            Assert.AreEqual("HFBW", result);
+        }
+        [TestMethod]
+        public void Offer_Equals_TrueIfSame()
+        {
+            //Arrange  Act
+            Offer newOffer = new Offer("HFBW");
+            Offer twoOffer = new Offer("HFBW");
+
+            //Assert
+            Assert.AreEqual(newOffer, twoOffer);
+
         }
     }
 }
