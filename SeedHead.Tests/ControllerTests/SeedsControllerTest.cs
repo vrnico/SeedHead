@@ -96,7 +96,31 @@ namespace SeedHead.Tests.ControllerTests
             db.DeleteAll();
         }
 
-     
+
+        [TestMethod]
+        public void TestDB_SeedEdit_Updates()
+        {
+            //Arrange
+            OffersController offerController = new OffersController(dbOffers);
+            SeedsController controller = new SeedsController(db);
+            Offer newOffer = new Offer { OfferId = 10, Name = "HFBW" };
+            Seed newSeed = new Seed { SeedId = 10, Name = "Amaranht", Amount = 40, Description = "A plant", OfferId = 10 };
+
+
+
+            //Act
+            offerController.Create(newOffer);
+            controller.Create(newSeed);
+            
+            newSeed.Name = "Amaranth";
+            controller.Edit(newSeed);
+            var seedOutput = (controller.Details(10) as ViewResult).ViewData.Model as Seed;
+
+            Assert.AreEqual(seedOutput.Name, "Amaranth");
+            db.DeleteAll();
+        }
+
+
 
     }
         
