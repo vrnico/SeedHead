@@ -18,5 +18,16 @@ namespace SeedHead.Tests
             Assert.AreEqual(newReview, twoReview);
 
         }
+
+
+        [TestMethod]
+        public void Constructor_ReturnReview_ReviewConstructor()
+        {
+            //Arrange    Act
+            Review newReview = new Review("Nico", 5, "Good plant");
+
+            //Assert
+            Assert.AreEqual(newReview.Name, "Nico");
+        }
     }
 }
