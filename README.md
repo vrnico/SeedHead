@@ -7,7 +7,7 @@
 #### Description
 SeedHead is a community resource for gardeners and farmers of all sorts. Our goal is to connect growers with the seeds they need, and to provide an interface for seed collectors to share their stash!
 ***
-[VISIT THE LIVE DEMO](https://google.com)
+
 ***
 
 ## Installation (build your own database!)
